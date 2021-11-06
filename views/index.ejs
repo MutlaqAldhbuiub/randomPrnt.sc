@@ -12,7 +12,7 @@
     <p>Images size is <%= images_size %></p>
 
     <% for (var i = 0; i < images_size;  i++ ) { %>
-      <img src="<%= images[i] %>" width="500" height="500">
+      <img src="<%= images[i] %>" loading=lazy width="500" height="500">
     <% } %>
   </body>
 </html>
