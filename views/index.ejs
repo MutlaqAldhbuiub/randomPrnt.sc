@@ -2,17 +2,53 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+
+    <style>
+      .floatL {
+      display:block;
+      width:500px;
+      float:left;
+      }
+    </style>
   </head>
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
 
-
-    <p>Images size is <%= images_size %></p>
+    <p>Images size is <span id="images_size"><b><%= images_size %></span></b></p>
 
     <% for (var i = 0; i < images_size;  i++ ) { %>
-      <img src="<%= images[i] %>" width="500" height="500">
+      <div class="floatL">
+        <img src="<%= images[i] %>" id="img_<%= i %>" crossorigin='anonymous' loading=lazy width="500" height="500">
+        <span>MobileNet model labeled this as : <b><span style="color:green" id="result_<%= i %>">...</span></b> with a confidence of <b><span style="color:green" id="probability_<%= i %>">...</span></b>.</span>
+      </div>
     <% } %>
+
+
+<!-- Script TAG -->
+    <script>
+      console.log('ml5 version:', ml5.version);
+      const images_size = document.getElementById('images_size').innerText;
+      console.log('images size:', images_size);
+
+        async function predictitImage(imageID){
+          const image = document.getElementById('img_'+imageID);
+          const result = document.getElementById('result_'+imageID);
+          console.log(image,result)
+          const probability = document.getElementById('probability_'+imageID);
+          ml5.imageClassifier('MobileNet') // MobileNet, 
+          .then(classifier => classifier.classify(image))
+          .then(results => {
+            result.innerText = results[0].label;
+            probability.innerText = results[0].confidence.toFixed(4);
+          });
+        }
+
+      // predictit 
+       for (let index = 0; index < images_size; index++) {
+          predictitImage(index);
+       }
+    </script>
   </body>
 </html>

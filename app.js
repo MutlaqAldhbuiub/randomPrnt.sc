@@ -11,7 +11,6 @@ const axios = require('axios').default;
 require('dotenv').config();
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 
 var app = express();
 const { JSDOM } = jsdom;
