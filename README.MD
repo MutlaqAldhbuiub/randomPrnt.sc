@@ -1,6 +1,6 @@
 # Light‑Shot screenshot viewer
 
-![screenshot](screenshot.png)
+![screencapture-localhost-3000-2023-08-12-20_52_22](https://github.com/MutlaqAldhbuiub/randomPrnt.sc/assets/9112378/06aed7d8-fd22-46dc-9fab-3307e572dee0)
 
 **Light‑Shot screenshot viewer** 🏞 that allowed users to find random screenshots from **[prnt.sc](https://prnt.sc/)** website with predction of images content. 
 
